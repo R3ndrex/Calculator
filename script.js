@@ -21,6 +21,14 @@ const operators = {
     },
 };
 
+function showNumberOnDisplay(e) {
+    if (display.textContent == 0) {
+        display.textContent = e.target.textContent;
+    } else {
+        display.textContent += e.target.textContent;
+    }
+}
+
 function memoryClear() {
     display.textContent = 0;
     resultDisplay.textContent = 0;
