@@ -2,10 +2,6 @@ let operator = "";
 let firstNumber = 0;
 let secondNumber = 0;
 
-const display = document.querySelector(".display");
-const resultDisplay = document.querySelector(".display-result");
-const buttons = document.querySelectorAll(".button");
-
 const operators = {
     "+": function add(a, b) {
         return a + b;
@@ -21,6 +17,10 @@ const operators = {
     },
 };
 
+const display = document.querySelector(".display");
+const resultDisplay = document.querySelector(".display-result");
+const buttons = document.querySelectorAll(".button");
+
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
         switch (e.target.textContent) {
@@ -30,7 +30,7 @@ buttons.forEach((button) => {
             case "*":
                 if (operator !== "") {
                     // if operation has more than one operator
-                    showOperationResult();
+                    displayOperationResult();
                 }
                 firstNumber = Number(display.textContent);
                 display.textContent = "0";
@@ -39,7 +39,7 @@ buttons.forEach((button) => {
                 break;
 
             case "=":
-                showOperationResult();
+                displayOperationResult();
                 break;
 
             case "MC":
@@ -52,7 +52,7 @@ buttons.forEach((button) => {
                 addDot(e);
                 break;
             default:
-                showNumberOnDisplay(e);
+                displayNumberOnDisplay(e);
                 break;
         }
     });
@@ -61,7 +61,7 @@ buttons.forEach((button) => {
 function addDot(e) {
     // if there is a dot button stops working
     if (!display.textContent.split("").includes(".")) {
-        showNumberOnDisplay(e);
+        displayNumberOnDisplay(e);
     }
 }
 
@@ -76,7 +76,7 @@ function DeleteNumber() {
     display.textContent = Number(array.join(""));
 }
 
-function showOperationResult() {
+function displayOperationResult() {
     secondNumber = Number(display.textContent);
     display.textContent = operate(operator, firstNumber, secondNumber);
     resultDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
@@ -84,7 +84,7 @@ function showOperationResult() {
     secondNumber = 0;
 }
 
-function showNumberOnDisplay(e) {
+function displayNumberOnDisplay(e) {
     if (display.textContent == 0) {
         display.textContent = e.target.textContent;
     } else {
