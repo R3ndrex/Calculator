@@ -21,6 +21,43 @@ const operators = {
     },
 };
 
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        switch (e.target.textContent) {
+            case "+":
+            case "/":
+            case "-":
+            case "*":
+                if (operator !== "") {
+                    // if operation has more than one operator
+                    showOperationResult();
+                }
+                firstNumber = Number(display.textContent);
+                display.textContent = "0";
+
+                operator = e.target.textContent;
+                break;
+
+            case "=":
+                showOperationResult();
+                break;
+
+            case "MC":
+                memoryClear();
+                break;
+            case "DEL":
+                DeleteNumber();
+                break;
+            case ".":
+                addDot(e);
+                break;
+            default:
+                showNumberOnDisplay(e);
+                break;
+        }
+    });
+});
+
 function addDot(e) {
     // if there is a dot button stops working
     if (!display.textContent.split("").includes(".")) {
