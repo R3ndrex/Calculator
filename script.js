@@ -21,6 +21,13 @@ const operators = {
     },
 };
 
+function addDot(e) {
+    // if there is a dot button stops working
+    if (!display.textContent.split("").includes(".")) {
+        showNumberOnDisplay(e);
+    }
+}
+
 function DeleteNumber() {
     // if NaN delete all text Content
     if (isNaN(display.textContent)) {
