@@ -21,6 +21,17 @@ const operators = {
     },
 };
 
+function DeleteNumber() {
+    // if NaN delete all text Content
+    if (isNaN(display.textContent)) {
+        display.textContent = 0;
+        return;
+    }
+    let array = Array.from(display.textContent);
+    array.pop();
+    display.textContent = Number(array.join(""));
+}
+
 function showOperationResult() {
     secondNumber = Number(display.textContent);
     display.textContent = operate(operator, firstNumber, secondNumber);
