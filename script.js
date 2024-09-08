@@ -21,6 +21,14 @@ const operators = {
     },
 };
 
+function showOperationResult() {
+    secondNumber = Number(display.textContent);
+    display.textContent = operate(operator, firstNumber, secondNumber);
+    resultDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
+    operator = "";
+    secondNumber = 0;
+}
+
 function showNumberOnDisplay(e) {
     if (display.textContent == 0) {
         display.textContent = e.target.textContent;
