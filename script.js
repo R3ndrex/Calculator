@@ -3,18 +3,10 @@ let firstNumber = 0;
 let secondNumber = 0;
 
 const operators = {
-    "+": function add(a, b) {
-        return a + b;
-    },
-    "-": function subtract(a, b) {
-        return a - b;
-    },
-    "*": function multiply(a, b) {
-        return a * b;
-    },
-    "/": function divide(a, b) {
-        return a / b;
-    },
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+    "/": (a, b) => a / b,
 };
 
 const display = document.querySelector(".display");
@@ -23,47 +15,51 @@ const buttons = document.querySelectorAll(".button");
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        switch (e.target.textContent) {
-            case "+":
-            case "/":
-            case "-":
-            case "*":
-                if (operator !== "") {
-                    // if operation has more than one operator
-                    displayOperationResult();
-                    firstNumber = Number(display.textContent);
-                    operator = e.target.textContent;
-                } else {
-                    firstNumber = Number(display.textContent);
-                    display.textContent = "0";
-                    operator = e.target.textContent;
-                }
-                break;
-
-            case "=":
-                displayOperationResult();
-                break;
-
-            case "MC":
-                memoryClear();
-                break;
-            case "DEL":
-                DeleteNumber();
-                break;
-            case ".":
-                addDot(e);
-                break;
-            default:
-                displayNumberOnDisplay(e);
-                break;
-        }
+        handleInputs(e.target);
     });
 });
 
-function addDot(e) {
+function handleInputs(button) {
+    switch (button.textContent) {
+        case "+":
+        case "/":
+        case "-":
+        case "*":
+            if (operator !== "") {
+                // if operation has more than one operator
+                displayOperationResult();
+                firstNumber = Number(display.textContent);
+                operator = button.textContent;
+            } else {
+                firstNumber = Number(display.textContent);
+                display.textContent = "0";
+                operator = button.textContent;
+            }
+            break;
+
+        case "=":
+            displayOperationResult();
+            break;
+
+        case "MC":
+            memoryClear();
+            break;
+        case "DEL":
+            DeleteNumber();
+            break;
+        case ".":
+            addDot(button.textContent);
+            break;
+        default:
+            displayNumberOnDisplay(button.textContent);
+            break;
+    }
+}
+
+function addDot(elementText) {
     // if there is a dot button stops working
     if (!display.textContent.split("").includes(".")) {
-        displayNumberOnDisplay(e);
+        displayNumberOnDisplay(elementText);
     }
 }
 
@@ -86,14 +82,14 @@ function displayOperationResult() {
     secondNumber = 0;
 }
 
-function displayNumberOnDisplay(e) {
+function displayNumberOnDisplay(elementText) {
     if (operator !== "") {
         display.textContent = 0;
     }
     if (display.textContent == 0) {
-        display.textContent = e.target.textContent;
+        display.textContent = elementText;
     } else {
-        display.textContent += e.target.textContent;
+        display.textContent += elementText;
     }
 }
 
