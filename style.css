@@ -28,7 +28,8 @@ body {
     flex-direction: column;
 }
 
-.container > * {
+.container > *,
+.numbers > * {
     flex: 1;
     display: flex;
 }
@@ -38,14 +39,11 @@ body {
     display: flex;
     flex-direction: column;
 }
-.numbers > * {
-    display: flex;
-    flex: 1;
-}
 
 .numbers > * > .button {
     flex: 1;
 }
+
 .display,
 .button,
 .display-result {
@@ -62,10 +60,10 @@ body {
     background-color: #a2af77;
     font-family: Orbitron, sans-serif;
 }
+
 .button {
     background-color: rgb(46, 46, 46);
     color: whitesmoke;
-    min-width: 10px;
     display: flex;
     justify-content: center;
 }
