@@ -31,11 +31,13 @@ buttons.forEach((button) => {
                 if (operator !== "") {
                     // if operation has more than one operator
                     displayOperationResult();
+                    firstNumber = Number(display.textContent);
+                    operator = e.target.textContent;
+                } else {
+                    firstNumber = Number(display.textContent);
+                    display.textContent = "0";
+                    operator = e.target.textContent;
                 }
-                firstNumber = Number(display.textContent);
-                display.textContent = "0";
-
-                operator = e.target.textContent;
                 break;
 
             case "=":
@@ -85,6 +87,9 @@ function displayOperationResult() {
 }
 
 function displayNumberOnDisplay(e) {
+    if (operator !== "") {
+        display.textContent = 0;
+    }
     if (display.textContent == 0) {
         display.textContent = e.target.textContent;
     } else {
