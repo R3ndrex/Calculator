@@ -1,9 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron");
 *::after,
 *::before,
 * {
     box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
 }
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(243, 118, 124, 255);
+}
+.container {
+    border-radius: 5px;
+    padding: 24px 8px;
+    border: 1px black solid;
+    background-color: #1e1c1f;
+}
+.container > * {
+    display: flex;
+}
+.numbers-container {
+    flex-direction: column;
+}
+.numbers-container > div {
+    display: flex;
+}
+
+.display,
+.button,
+.display-result {
+    border-radius: 5px;
+    flex: 1;
+    font-size: 32px;
+    padding: 12px 18px;
+    margin: 8px;
+}
+.display,
+.display-result {
+    justify-content: flex-end;
+    background-color: #a2af77;
+    font-family: Orbitron, sans-serif;
+}
+
+.button {
+    background-color: rgb(46, 46, 46);
+    color: whitesmoke;
+}
+.button:hover {
+    background-color: #1e1c1f;
+}
+.button.equals {
+    background-color: #f15a2a;
+}
+.button.equals:hover {
+    background-color: #993719;
 }
