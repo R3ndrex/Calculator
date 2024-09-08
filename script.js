@@ -20,3 +20,12 @@ const operators = {
         return a / b;
     },
 };
+
+function operate(operator, firstNumber, secondNumber) {
+    if (operator === "/" && secondNumber === 0) return NaN;
+    let result = operators[operator](firstNumber, secondNumber);
+    if (result % 1 === 0) {
+        return result;
+    }
+    return result.toFixed(5);
+}
