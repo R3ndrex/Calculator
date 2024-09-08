@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat");
 @import url("https://fonts.googleapis.com/css2?family=Orbitron");
+
 *::after,
 *::before,
 * {
     box-sizing: border-box;
     font-family: Montserrat, sans-serif;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -16,22 +18,34 @@ body {
     align-items: center;
     background-color: rgb(243, 118, 124, 255);
 }
+
 .container {
     border-radius: 5px;
     padding: 24px 8px;
     border: 1px black solid;
     background-color: #1e1c1f;
-}
-.container > * {
     display: flex;
-}
-.numbers-container {
     flex-direction: column;
 }
-.numbers-container > div {
+
+.container > * {
+    flex: 1;
     display: flex;
 }
 
+.operator-container,
+.numbers {
+    display: flex;
+    flex-direction: column;
+}
+.numbers > * {
+    display: flex;
+    flex: 1;
+}
+
+.numbers > * > .button {
+    flex: 1;
+}
 .display,
 .button,
 .display-result {
@@ -41,6 +55,7 @@ body {
     padding: 12px 18px;
     margin: 8px;
 }
+
 .display,
 .display-result {
     justify-content: flex-end;
@@ -51,13 +66,19 @@ body {
 .button {
     background-color: rgb(46, 46, 46);
     color: whitesmoke;
+    min-width: 10px;
+    display: flex;
+    justify-content: center;
 }
+
 .button:hover {
     background-color: #1e1c1f;
 }
+
 .button.equals {
     background-color: #f15a2a;
 }
+
 .button.equals:hover {
     background-color: #993719;
 }
