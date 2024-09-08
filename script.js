@@ -21,6 +21,14 @@ const operators = {
     },
 };
 
+function memoryClear() {
+    display.textContent = 0;
+    resultDisplay.textContent = 0;
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = "";
+}
+
 function operate(operator, firstNumber, secondNumber) {
     if (operator === "/" && secondNumber === 0) return NaN;
     let result = operators[operator](firstNumber, secondNumber);
