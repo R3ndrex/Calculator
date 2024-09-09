@@ -14,12 +14,13 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(243, 118, 124, 255);
 }
 
 .container {
+    margin-top: 150px;
     border-radius: 5px;
     padding: 24px 8px;
     border: 1px black solid;
@@ -78,4 +79,15 @@ body {
 
 .button.equals:hover {
     background-color: #993719;
+}
+.guide {
+    margin: 12px;
+    align-self: flex-start;
+}
+.guide > p {
+    color: white;
+    opacity: 50%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
 }
