@@ -146,5 +146,5 @@ function operate(operator, firstNumber, secondNumber) {
     if (result % 1 === 0) {
         return result;
     }
-    return result.toFixed(5);
+    return result.toFixed(2);
 }
