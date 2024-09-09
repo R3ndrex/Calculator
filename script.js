@@ -1,6 +1,7 @@
 let operator = "";
 let firstNumber = 0;
 let secondNumber = 0;
+let isNewNumber = false;
 
 const operators = {
     "+": (a, b) => a + b,
@@ -19,6 +20,46 @@ buttons.forEach((button) => {
     });
 });
 
+document.addEventListener("keyup", (e) => {
+    handleInputsKeys(e.key);
+});
+
+function handleInputsKeys(key) {
+    console.log("key: " + key);
+    if (isOperator(key)) {
+        if (operator !== "") {
+            // if operation has more than one operator
+            displayOperationResult();
+            firstNumber = Number(display.textContent);
+            operator = key;
+        } else {
+            firstNumber = Number(display.textContent);
+            display.textContent = "0";
+            operator = key;
+        }
+    } else if (isNumber(key)) {
+        displayNumberOnDisplay(key);
+    } else if (key === "=" || key === "Enter") {
+        displayOperationResult();
+    } else if (key === "Backspace" || key === "Delete") {
+        DeleteNumber();
+    } else if (key === ".") {
+        addDot(key);
+    } else if (key === "Escape") {
+        memoryClear();
+    } else {
+        return;
+    }
+}
+
+function isOperator(string) {
+    return string === "+" || string === "-" || string === "*" || string === "/";
+}
+
+function isNumber(string) {
+    return !isNaN(string);
+}
+
 function handleInputs(button) {
     switch (button.textContent) {
         case "+":
@@ -30,17 +71,16 @@ function handleInputs(button) {
                 displayOperationResult();
                 firstNumber = Number(display.textContent);
                 operator = button.textContent;
+                isNewNumber = true;
             } else {
                 firstNumber = Number(display.textContent);
                 display.textContent = "0";
                 operator = button.textContent;
             }
             break;
-
         case "=":
             displayOperationResult();
             break;
-
         case "MC":
             memoryClear();
             break;
@@ -80,14 +120,13 @@ function displayOperationResult() {
     resultDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
     operator = "";
     secondNumber = 0;
+    isNewNumber = true;
 }
 
 function displayNumberOnDisplay(elementText) {
-    if (operator !== "") {
-        display.textContent = 0;
-    }
-    if (display.textContent == 0) {
+    if (display.textContent == 0 || isNewNumber) {
         display.textContent = elementText;
+        isNewNumber = false;
     } else {
         display.textContent += elementText;
     }
