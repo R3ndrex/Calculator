@@ -1,6 +1,7 @@
 let operator = "";
 let firstNumber = 0;
 let secondNumber = 0;
+const bigNumber = 1e9;
 
 const operators = {
     "+": (a, b) => a + b,
@@ -83,13 +84,13 @@ function DeleteNumber() {
 function displayOperationResult() {
     secondNumber = Number(display.textContent);
     display.textContent = operate(operator, firstNumber, secondNumber);
-    if (Number(display.textContent) > 1e9) {
+    if (Number(display.textContent) > bigNumber) {
         display.textContent = Number(display.textContent).toExponential(2);
     }
-    if (firstNumber > 1e9) {
+    if (firstNumber > bigNumber) {
         firstNumber = firstNumber.toExponential(2);
     }
-    if (secondNumber > 1e9) {
+    if (secondNumber > bigNumber) {
         secondNumber = secondNumber.toExponential(2);
     }
     resultDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
