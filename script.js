@@ -1,7 +1,6 @@
 let operator = "";
 let firstNumber = 0;
 let secondNumber = 0;
-let isNewNumber = false;
 
 const operators = {
     "+": (a, b) => a + b,
@@ -16,39 +15,42 @@ const buttons = document.querySelectorAll(".button");
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        handleInputs(e.target);
+        handleInputs(e.target.textContent);
     });
 });
 
 document.addEventListener("keyup", (e) => {
-    handleInputsKeys(e.key);
+    handleInputs(e.key);
 });
 
-function handleInputsKeys(key) {
-    console.log("key: " + key);
-    if (isOperator(key)) {
-        if (operator !== "") {
-            // if operation has more than one operator
-            displayOperationResult();
-            firstNumber = Number(display.textContent);
-            operator = key;
-        } else {
-            firstNumber = Number(display.textContent);
-            display.textContent = "0";
-            operator = key;
-        }
-    } else if (isNumber(key)) {
-        displayNumberOnDisplay(key);
-    } else if (key === "=" || key === "Enter") {
+function handleInputs(elementText) {
+    if (isOperator(elementText)) {
+        handleOperatorInput(elementText);
+    } else if (isNumber(elementText)) {
+        displayNumberOnDisplay(elementText);
+    } else if (elementText === "=" || elementText === "Enter") {
         displayOperationResult();
-    } else if (key === "Backspace" || key === "Delete") {
+    } else if (elementText === "Backspace" || elementText === "Delete") {
         DeleteNumber();
-    } else if (key === ".") {
-        addDot(key);
-    } else if (key === "Escape") {
+    } else if (elementText === ".") {
+        addDot(elementText);
+    } else if (elementText === "Escape" || elementText === "MC") {
         memoryClear();
     } else {
         return;
+    }
+}
+
+function handleOperatorInput(elementText) {
+    if (operator !== "") {
+        // if operation has more than one operator
+        displayOperationResult();
+        firstNumber = Number(display.textContent);
+        operator = elementText;
+    } else {
+        firstNumber = Number(display.textContent);
+        display.textContent = "0";
+        operator = elementText;
     }
 }
 
@@ -60,42 +62,6 @@ function isNumber(string) {
     return !isNaN(string);
 }
 
-function handleInputs(button) {
-    switch (button.textContent) {
-        case "+":
-        case "/":
-        case "-":
-        case "*":
-            if (operator !== "") {
-                // if operation has more than one operator
-                displayOperationResult();
-                firstNumber = Number(display.textContent);
-                operator = button.textContent;
-                isNewNumber = true;
-            } else {
-                firstNumber = Number(display.textContent);
-                display.textContent = "0";
-                operator = button.textContent;
-            }
-            break;
-        case "=":
-            displayOperationResult();
-            break;
-        case "MC":
-            memoryClear();
-            break;
-        case "DEL":
-            DeleteNumber();
-            break;
-        case ".":
-            addDot(button.textContent);
-            break;
-        default:
-            displayNumberOnDisplay(button.textContent);
-            break;
-    }
-}
-
 function addDot(elementText) {
     // if there is a dot button stops working
     if (!display.textContent.split("").includes(".")) {
@@ -104,7 +70,7 @@ function addDot(elementText) {
 }
 
 function DeleteNumber() {
-    // if NaN delete all text Content
+    // if NaN delete all text content
     if (isNaN(display.textContent)) {
         display.textContent = 0;
         return;
@@ -117,16 +83,23 @@ function DeleteNumber() {
 function displayOperationResult() {
     secondNumber = Number(display.textContent);
     display.textContent = operate(operator, firstNumber, secondNumber);
+    if (Number(display.textContent) > 1e9) {
+        display.textContent = Number(display.textContent).toExponential(2);
+    }
+    if (firstNumber > 1e9) {
+        firstNumber = firstNumber.toExponential(2);
+    }
+    if (secondNumber > 1e9) {
+        secondNumber = secondNumber.toExponential(2);
+    }
     resultDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
     operator = "";
     secondNumber = 0;
-    isNewNumber = true;
 }
 
 function displayNumberOnDisplay(elementText) {
-    if (display.textContent == 0 || isNewNumber) {
+    if (display.textContent == 0) {
         display.textContent = elementText;
-        isNewNumber = false;
     } else {
         display.textContent += elementText;
     }
