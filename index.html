@@ -2,6 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta
+            name="description"
+            content="Basic online calculator with keyboard support"
+        />
         <script defer src="./script.js"></script>
         <link rel="stylesheet" href="./style.css" />
         <link
@@ -12,47 +16,49 @@
         <title>Calculator</title>
     </head>
     <body>
-        <div class="container">
+        <main class="container">
             <div class="display-result">0</div>
             <div class="display">0</div>
             <div class="buttons-container">
                 <div class="numbers">
                     <div class="additional">
-                        <button class="button equals">=</button>
-                        <button class="button backspace">DEL</button>
-                        <button class="button MC">MC</button>
+                        <button class="button equals" value="=">=</button>
+                        <button class="button backspace" value="Backspace">
+                            DEL
+                        </button>
+                        <button class="button MC" value="MC">MC</button>
                     </div>
                     <div>
-                        <button class="button 7">7</button>
-                        <button class="button 8">8</button>
-                        <button class="button 9">9</button>
+                        <button class="button 7" value="7">7</button>
+                        <button class="button 8" value="8">8</button>
+                        <button class="button 9" value="9">9</button>
                     </div>
                     <div>
-                        <button class="button 4">4</button>
-                        <button class="button 5">5</button>
-                        <button class="button 6">6</button>
+                        <button class="button 4" value="4">4</button>
+                        <button class="button 5" value="5">5</button>
+                        <button class="button 6" value="6">6</button>
                     </div>
                     <div>
-                        <button class="button 1">1</button>
-                        <button class="button 2">2</button>
-                        <button class="button 3">3</button>
+                        <button class="button 1" value="1">1</button>
+                        <button class="button 2" value="2">2</button>
+                        <button class="button 3" value="3">3</button>
                     </div>
                 </div>
                 <div class="operators">
                     <div class="operator-container">
-                        <button class="button +">+</button>
-                        <button class="button -">-</button>
-                        <button class="button *">*</button>
-                        <button class="button /">/</button>
+                        <button class="button +" value="+">+</button>
+                        <button class="button -" value="-">-</button>
+                        <button class="button *" value="*">*</button>
+                        <button class="button /" value="/">/</button>
                     </div>
                 </div>
                 <!-- CE clears display -->
             </div>
             <div class="additional-container">
-                <button class="button 0">0</button>
-                <button class="button dot">.</button>
+                <button class="button 0" value="0">0</button>
+                <button class="button dot" value=".">.</button>
             </div>
-        </div>
+        </main>
         <div class="guide">
             <p>Upper window will display operation result</p>
             <p>Lower window will display numbers entered and result</p>
