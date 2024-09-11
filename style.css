@@ -60,6 +60,8 @@ body {
     justify-content: flex-end;
     background-color: #a2af77;
     font-family: Orbitron, sans-serif;
+    max-width: 365px;
+    overflow: hidden;
 }
 
 .button {
