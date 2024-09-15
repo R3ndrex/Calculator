@@ -29,8 +29,8 @@ body {
     flex-direction: column;
 }
 
-.container > *,
-.numbers > * {
+.container div,
+.numbers div {
     flex: 1;
     display: flex;
 }
@@ -41,7 +41,7 @@ body {
     flex-direction: column;
 }
 
-.numbers > * > .button {
+.numbers > div > .button {
     flex: 1;
 }
 
@@ -83,13 +83,14 @@ body {
     background-color: #993719;
 }
 .guide {
-    margin: 12px;
     align-self: flex-start;
-}
-.guide > p {
     color: white;
     opacity: 50%;
-    margin: 0;
     padding: 0;
     font-size: 16px;
+    margin: 0.8rem;
+}
+p,
+h1 {
+    margin: 0;
 }
