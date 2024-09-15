@@ -1,5 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat");
-@import url("https://fonts.googleapis.com/css2?family=Orbitron");
+@font-face {
+    font-display: swap;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/montserrat-v26-latin-regular.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Orbitron";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/orbitron-v31-latin-regular.woff2") format("woff2");
+}
 
 *::after,
 *::before,
