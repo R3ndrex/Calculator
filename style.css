@@ -49,14 +49,8 @@ body {
 
 .operator-container,
 .numbers {
-    display: flex;
     flex-direction: column;
 }
-
-.numbers > div > .button {
-    flex: 1;
-}
-
 .display,
 .button,
 .display-result {
@@ -75,26 +69,18 @@ body {
     max-width: 365px;
     overflow: hidden;
 }
-
 .button {
-    background-color: rgb(46, 46, 46);
     color: whitesmoke;
     display: flex;
     justify-content: center;
-}
-.button:hover {
-    transform: scale(1.1);
-}
-
-/* numbers on hover */
-button:hover {
-    background-color: #1e1c1f;
+    background-color: rgb(46, 46, 46);
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .button.equals {
     background-color: #f15a2a;
 }
-
-.button.equals:hover {
-    background-color: #993719;
+.button:hover {
+    transform: scale(1.1);
+    filter: brightness(90%);
 }
