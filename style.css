@@ -26,13 +26,12 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: rgb(243, 118, 124, 255);
 }
 
 .container {
-    margin-top: 150px;
     border-radius: 5px;
     padding: 24px 8px;
     border: 1px black solid;
@@ -66,7 +65,7 @@ body {
     justify-content: flex-end;
     background-color: #a2af77;
     font-family: Orbitron, sans-serif;
-    max-width: 365px;
+    max-width: 100%;
     overflow: hidden;
 }
 .button {
@@ -75,12 +74,12 @@ body {
     justify-content: center;
     background-color: rgb(46, 46, 46);
     transition: transform 0.2s ease, background-color 0.2s ease;
+    :hover {
+        transform: scale(1.1);
+        filter: brightness(90%);
+    }
 }
 
 .button.equals {
     background-color: #f15a2a;
-}
-.button:hover {
-    transform: scale(1.1);
-    filter: brightness(90%);
 }
