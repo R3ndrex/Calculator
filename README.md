@@ -23,7 +23,7 @@ Lower window will display numbers entered and result:
 
 ## Screenshots
 
-![MainScreen](https://i.imgur.com/OqtVNyZ.png?raw=true)
+![MainScreen](https://i.imgur.com/BDZbnyw.png?raw=true)
 
 ## Sources
 
