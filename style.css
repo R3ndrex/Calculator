@@ -13,8 +13,8 @@
     src: url("./fonts/orbitron-v31-latin-regular.woff2") format("woff2");
 }
 
-*::after,
-*::before,
+::after,
+::before,
 * {
     box-sizing: border-box;
     font-family: Montserrat, sans-serif;
@@ -82,8 +82,12 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .button:hover {
+    transform: scale(1.1);
+}
+
+/* numbers on hover */
+button:hover {
     background-color: #1e1c1f;
 }
 
@@ -93,16 +97,4 @@ body {
 
 .button.equals:hover {
     background-color: #993719;
-}
-.guide {
-    align-self: flex-start;
-    color: white;
-    opacity: 50%;
-    padding: 0;
-    font-size: 16px;
-    margin: 0.8rem;
-}
-p,
-h1 {
-    margin: 0;
 }
